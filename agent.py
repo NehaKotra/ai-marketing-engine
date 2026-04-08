@@ -6,9 +6,12 @@ from website_scraper import get_website_content
 from dotenv import load_dotenv
 
 load_dotenv()
-api_key = os.getenv("GROQ_API_KEY")
+import streamlit as st
+
+api_key = st.secrets["GROQ_API_KEY"]
 
 llm = ChatGroq(
+    groq_api_key=st.secrets["GROQ_API_KEY"],
     model="llama-3.1-8b-instant",
     temperature=0.7
 )
